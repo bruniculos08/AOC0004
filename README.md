@@ -1,2 +1,2 @@
 # AOC0004
-Materiais da aula de ANN (Análise Numérica) do curso de Bacharelado em Ciência da Computação - UDESC
+Materiais da aula de AOC (Arquitetura e Organização de Computadores) do curso de Bacharelado em Ciência da Computação - UDESC
