@@ -1,6 +1,4 @@
     .data
-argumentNumber: .word 0
-resultNumber: .word 0
 
     .text
     .globl main
