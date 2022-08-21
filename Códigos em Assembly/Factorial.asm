@@ -11,7 +11,7 @@ main:
 factorial:
     addi $s2, $s2, -1       # $s2 = $s2-1
     mul $s1, $s1, $s2       # $s1 = $s1*$s2
-    bgt $s2, 1, factorial        # if($s2 >= 0) factorial();
+    bgt $s2, 1, factorial   # if($s2 >= 0) factorial();
     j end
 
 end:
