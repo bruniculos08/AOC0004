@@ -1,5 +1,5 @@
 .data
-    jumpLine: .asciiz "\n\0" 
+    jumpLine: .asciiz "\n"      # ".asciiz" coloca "\0" automaticamente no final da string 
     error: .ascii "\nERRO\0" 
 
     # Aviso: perguntar ao professor por que o print pega todas as strings após o endereço da string desejada (segundo...
