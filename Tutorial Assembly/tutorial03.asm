@@ -12,7 +12,7 @@ main:
     li, $v0, 1
     syscall
 
-    # (2) Printar nova linha:
+    # (1.1) Printar nova linha:
     la $a0, newLine
     li, $v0, 4
     syscall
@@ -46,5 +46,5 @@ increaseRegister:
     lw $s0, 0($sp)
     addi $sp, $sp, 4
 
-    # (6) voltar para a função main:
+    # (6) Voltar para a função main:
     jr $ra
