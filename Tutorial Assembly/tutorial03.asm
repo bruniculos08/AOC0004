@@ -1,5 +1,5 @@
 .data
-    newLine:  .asciiz "\n\0"
+    newLine: .asciiz "\n"
 
 .text
 .globl main
@@ -7,10 +7,14 @@
 main: 
     addi $s0, $zero, 10
 
-
     # (1) Printar o valor:
     move $a0, $s0		    # $a0 = $s0 (move conteúdo de um registrador para outro)
     li, $v0, 1
+    syscall
+
+    # (2) Printar nova linha:
+    la $a0, newLine
+    li, $v0, 4
     syscall
 
     # Pulando para a função increaseRegister:
@@ -42,5 +46,5 @@ increaseRegister:
     lw $s0, 0($sp)
     addi $sp, $sp, 4
 
-
+    # (6) voltar para a função main:
     jr $ra
