@@ -5,7 +5,8 @@
     # Aviso: perguntar ao professor por que o print pega todas as strings após o endereço da string desejada (segundo...
     # ... a documentação isso não era pra acontecer.
 
-    # Obs.: Pelo visto o problema relacionado ao aviso era a falta de "\0".
+    # Obs. 1: Pelo visto o problema relacionado ao aviso era a falta de "\0".
+    # Obs. 2: Usar os registradores $tn a não ser que seja necessário usar um $sn.
 
 .text
     .globl main
@@ -21,9 +22,10 @@ main:
 
     beq	$s1, $zero, errorMessege	# if $t1 == $zero then useLinker
 
-    div $s0, $a0, $s1   # $s0 = $a0/$s1 (para printar a média)
+    div $s0, $a0, $s1   # $s0 = $a0/$s1 (para printar a média)  
     la $a0, jumpLine
-
+                        # Obs.: div com 3 argumentos é uma pseudo-instrução pois o div padrão usa 2 argumentos e guardo o resto em $hi e...
+                        # ... o quociente(resultado) em $lo
 
     li $v0, 4           # $v0 = 4 que é o código para printar a string em $a0
     syscall
