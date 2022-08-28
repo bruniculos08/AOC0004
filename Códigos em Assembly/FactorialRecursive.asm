@@ -21,24 +21,9 @@ fat:
     sw $ra, 0($sp)          
 
     addi $sp, $sp, -4       # Salvando o valor de n:
-    sw $a0, 0($sp)          
-
-    addi $a0, $a0, -1
-
-    jal useLinker
-
-    lw $t0, 0($sp)
-    mul $a0, $a0, $t0
-    addi $sp, $sp, 4
-
-    lw $t0, 0($sp)
-    addi $sp, $sp, 4
- 
-    jr $t0
-
-useLinker:
-    bne $a0, 1, fat
-    jr $ra              # O endereço  em $ra só vai ser usado para voltar a linha do "jal useLinker" quando n = 1
+    sw $a0, 0($sp)      
+    
+        
 
 end:
     li $v0, 10
