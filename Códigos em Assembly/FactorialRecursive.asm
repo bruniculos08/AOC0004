@@ -2,6 +2,8 @@
 .text
 .globl main
 
+# Tentativa 1
+
 main:
     li $v0, 5       # Colocar em $v0 o código para ler inteiro de input do usuário
     syscall
