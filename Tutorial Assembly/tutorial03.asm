@@ -20,6 +20,16 @@ main:
     # Pulando para a função increaseRegister:
     jal increaseRegister    
 
+    # (1.2) Printar nova linha:
+    la $a0, newLine
+    li, $v0, 4
+    syscall
+
+    # (1.3) Printar o valor:
+    move $a0, $s0		    # $a0 = $s0 (move conteúdo de um registrador para outro)
+    li, $v0, 1
+    syscall
+
     # Final do programa:
     li, $v0, 10
     syscall
