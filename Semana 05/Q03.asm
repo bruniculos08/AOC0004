@@ -20,8 +20,17 @@ end:
     syscall
 
 callFibonacci:
+    # Salvar variáveis
+    add $sp, $sp, -4
+    sw $ra, 0($sp)
+
     li $v0, 0
     jal fibonacci
+
+    # Restaurar variáveis
+    lw $ra, 0($sp)
+    add $sp, $sp, 4
+
     jr $ra
 
 fibonacci:
@@ -31,26 +40,20 @@ fibonacci:
     sw $a0, 4($sp)
 
     # Função:
-    testEqual2:
     li $t0, 2
-    bne $a0, $t0, testLessOrEqual1
+    bgt $a0, $t0, greaterThan2
+    blt $a0, $t0, lessThan2
+
+    equal2:
     addi $v0, $v0, 2
     j endFibonacci
 
-    testLessOrEqual1: 
-    li $t0, 1
-    bgt $a0, $t1, moreThan2
-    addi $v0, $v0, 1
-    j endFibonacci
-
-    moreThan2:
-    addi $a0, $a0, -1   # fibonacci(n-1)
-    jal fibonacci
+    greaterThan2:  
     
-    # Poderia-se restaurar aqui o valor de $a0 somando 1 (creio que seria uma boa prática para usar no compilador)
 
-    addi $a0, $a0, -1   # fibonacci(n-2)
-    jal fibonacci
+    lessThan2:
+    addi $v0, $v0, 1
+
 
     endFibonacci:
     # Restaurar variáveis:
