@@ -24,6 +24,7 @@ callFibonacci:
     add $sp, $sp, -4
     sw $ra, 0($sp)
 
+    # Essa função auxiliar é necessária para zerar $v0
     li $v0, 0
     jal fibonacci
 
@@ -48,12 +49,17 @@ fibonacci:
     addi $v0, $v0, 2
     j endFibonacci
 
-    greaterThan2:  
-    
-
     lessThan2:
     addi $v0, $v0, 1
+    j endFibonacci
 
+    greaterThan2:  
+    addi $a0, $a0, -1 # fibonacci(n-1)
+    jal fibonacci
+    # Poderia restaurar o valor de $a0 aqui (seria um bom padrão pra se usar no compilador),...
+    # ... então depois somando -2 no addi.
+    addi $a0, $a0, -1 # fibonacci(n-2)
+    jal fibonacci
 
     endFibonacci:
     # Restaurar variáveis:
