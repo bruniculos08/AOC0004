@@ -1,4 +1,4 @@
-# Contador de dígitos
+# Contador de ocorrências de um dígito k em um número n 
 .data
     jumpLine: .ascii "\n"
 .text
@@ -44,12 +44,15 @@ digitCount:
     sw $a1, 8($sp)
     sw $s0, 12($sp)
 
+    # Note que é desnecessário salvar $a1 na pilha pois o dígito k procurado é sempre o mesmo...
+    # ... em qualquer nível de recursão.
+
     # Função:
     li $v0, 0
     li $t0, 10
     div $a0, $t0 
-    mflo $a0    # $a0 = 0
-    mfhi $s0    # $s0 = 1
+    mflo $a0    # $a0 = quociente
+    mfhi $s0    # $s0 = resto
     beq $a0, $zero, verifyRest # (1) Se o quociente da divisão for 0 não continua a recursão
     jal digitCount
     verifyRest:
